@@ -1,7 +1,8 @@
 package com.securityservice.service;
 
+import com.securityservice.entity.User;
 import com.securityservice.mapper.UserMapper;
-import com.securityservice.model.exception.UserNotFoundException;
+import com.securityservice.model.exception.user.UserNotFoundException;
 import com.securityservice.model.request.UserRequest;
 import com.securityservice.model.response.UserResponse;
 import com.securityservice.repository.UserRepository;
@@ -14,20 +15,10 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   private final UserRepository userRepository;
-  private final UserMapper userMapper;
 
-  public UserResponse getUserBpId(Long userId) {
+  public User loadUserByUsername(String email) {
     return userRepository
-        .findById(userId)
-        .map(userMapper::mapToResponse)
-        .orElseThrow(() -> new UserNotFoundException(userId));
-  }
-
-  public UserResponse createUser(UserRequest request) {
-    return Optional.of(request)
-        .map(userMapper::mapToEntity)
-        .map(userRepository::save)
-        .map(userMapper::mapToResponse)
-        .orElseThrow();
+            .findByEmail(email)
+            .orElseThrow(() -> new UserNotFoundException("User Not Found with current email: " + email));
   }
 }

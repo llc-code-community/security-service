@@ -2,7 +2,7 @@ package com.securityservice.configuration;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-import com.securityservice.model.exception.UserNotFoundException;
+import com.securityservice.model.exception.user.UserNotFoundException;
 import jakarta.validation.constraints.NotNull;
 import java.time.Instant;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class ExceptionHandlerConfiguration extends ResponseEntityExceptionHandle
     return new ResponseEntity<>(problemDetail, status);
   }
 
-  @ExceptionHandler(UserNotFoundException.class)
+  @ExceptionHandler({ UserNotFoundException.class })
   public ProblemDetail handleNotFoundException(RuntimeException ex, WebRequest request) {
     return constructProblemDetail(
         NOT_FOUND, ex.getClass().getSimpleName(), "Entity not found", ex.getMessage(), request);

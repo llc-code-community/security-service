@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
 
   public UserResponse mapToResponse(User user) {
-    return new UserResponse(user.getUserId(), user.getFirstName(), user.getLastName());
+    return new UserResponse(user.getUserId(), user.getFirstname(), user.getLastname());
   }
 
   public User mapToEntity(UserRequest request) {
-    return User.builder().firstName(request.firstName()).lastName(request.lastName()).build();
+    return User.builder().firstname(request.firstName()).lastname(request.lastName()).build();
   }
 }

@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.securityservice.ITBase;
 import com.securityservice.entity.User;
-import com.securityservice.model.exception.UserNotFoundException;
 import com.securityservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;

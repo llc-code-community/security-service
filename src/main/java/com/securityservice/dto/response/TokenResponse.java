@@ -1,6 +1,8 @@
 package com.securityservice.dto.response;
 
-public record TokenResponse(
-        String jwt
-) {
+import lombok.Builder;
+
+@Builder
+public class TokenResponse {
+    private String jwt;
 }

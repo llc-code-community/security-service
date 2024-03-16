@@ -10,6 +10,12 @@ spring:
     name: security-service
     version: 0.0.1.test
     description: security service
+    security:
+      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      expiration: 86400000
+      prefix: 'Bearer '
+      refresh-token:
+        expiration: 604800000
   datasource:
     url: jdbc:postgresql://localhost:5432/app_security
     username: admin

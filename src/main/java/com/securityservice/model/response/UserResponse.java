@@ -1,3 +1,3 @@
 package com.securityservice.model.response;
 
-public record UserResponse(Long userId, String firstName, String lastName) {}
+public record UserResponse(Integer userId, String firstName, String lastName) {}
