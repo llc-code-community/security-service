@@ -1,7 +1,6 @@
 package com.securityservice.service;
 
 import com.securityservice.entity.User;
-import com.securityservice.repository.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

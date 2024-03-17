@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
                     registry.requestMatchers("/api/v1/auth/register").permitAll();
-                    registry.requestMatchers("/api/v1/auth/authenticate").permitAll();
+                    registry.requestMatchers("/api/v1/auth/auth").permitAll();
                     registry.requestMatchers("/api/v1/auth/validate").authenticated();
                 })
                 .authenticationProvider(authenticationProvider())
