@@ -1,26 +1,36 @@
 dbHost: localhost
 dbPort: 5432
-dbName: template_name
-dbUsername: template_username
-dbPassword: template_password
-dbSchema: app_java_spring_template
+dbName: app_security
+dbUsername: admin
+dbPassword: super_secret_password
+dbSchema: app_security
 
 spring:
   application:
-    name: java-spring-template
+    name: security-service
     version: 0.0.1.test
-    description: java template project, feel free to change
+    description: security service
+    security:
+      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      expiration: 86400000
+      prefix: 'Bearer '
+      refresh-token:
+        expiration: 604800000
   datasource:
-    url: jdbc:postgresql://${dbHost}:${dbPort}/${dbName}
-    username: ${dbUsername}
-    password: ${dbPassword}
+    url: jdbc:postgresql://localhost:5432/app_security
+    username: admin
+    password: super_secret_password
     driver-class-name: org.postgresql.Driver
   flyway:
     schemas: ${dbSchema}
   jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
         default_schema: ${dbSchema}
+        format_sql: true
 
 management:
   endpoints:
